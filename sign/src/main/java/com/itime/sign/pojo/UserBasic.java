@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
@@ -17,6 +18,7 @@ public class UserBasic {
     private ObjectId _id;
 
     //闲时号
+    @Indexed(unique = true, background = true)
     private ObjectId it_code;
 
     //用户昵称

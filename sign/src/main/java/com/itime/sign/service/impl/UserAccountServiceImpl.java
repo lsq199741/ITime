@@ -55,8 +55,8 @@ public class UserAccountServiceImpl implements IUserAccountService {
     }
 
     @Override
-    public UserAccount findUserByWeChat(String openId) {
-        return mongoOperations.findOne(new Query(Criteria.where("userWeChat.openid").is(openId)), UserAccount.class);
+    public UserAccount findUserByItCode(String itCode) {
+        return mongoOperations.findOne(new Query(Criteria.where("it_code").is(itCode)), UserAccount.class);
     }
 
 }

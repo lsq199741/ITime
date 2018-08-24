@@ -15,6 +15,5 @@ public interface IUserAccountService {
 
     UserAccount findUserByEmail(String email);
 
-    UserAccount findUserByWeChat(String openId);
-
+    UserAccount findUserByItCode(String itCode);
 }

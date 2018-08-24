@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @RestController
@@ -22,7 +24,7 @@ public class SignInController {
     }
 
     @RequestMapping(value = "/email")
-    public JsonResult loginByEmail(@Valid String email, @Valid String password) {
+    public JsonResult loginByEmail(@Valid String email, @Valid String password, HttpServletRequest request) {
         UserAccount account = null;
         try {
             account = userAccountService.findUserByEmail(email);
@@ -38,6 +40,8 @@ public class SignInController {
             if (!r) {
                 return JsonResult.errorMsg("兄弟你输入的东西好像有些问题,要不再试试～");
             } else {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", account.getEmail());
                 account.setPassword("");
                 return JsonResult.ok(account);
             }
@@ -45,8 +49,6 @@ public class SignInController {
             return JsonResult.errorMsg("小伙子你在干啥,有没有注册你心里没点嗯..数嘛～");
         }
     }
-
-
 
 
 }
