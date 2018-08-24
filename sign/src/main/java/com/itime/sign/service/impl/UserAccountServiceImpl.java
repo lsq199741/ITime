@@ -9,11 +9,11 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
-@Component("userService")
+@Component("userAccountService")
 public class UserAccountServiceImpl implements IUserAccountService {
 
     @Autowired
-    MongoOperations mongoOperations;
+    private MongoOperations mongoOperations;
 
     @Override
     public boolean saveUser(UserAccount user) {

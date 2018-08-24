@@ -6,28 +6,26 @@ import com.itime.sign.pojo.JsonResult;
 import com.itime.sign.utils.PassUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/sign_in", method = RequestMethod.POST)
+@RequestMapping(value = "/sign_in")
 public class SignInController {
 
-    private final IUserAccountService userService;
+    private final IUserAccountService userAccountService;
 
     @Autowired
-    public SignInController(IUserAccountService userService) {
-        this.userService = userService;
+    public SignInController(IUserAccountService userAccountService) {
+        this.userAccountService = userAccountService;
     }
 
     @RequestMapping(value = "/email")
     public JsonResult loginByEmail(@Valid String email, @Valid String password) {
-
         UserAccount account = null;
         try {
-            account = userService.findUserByEmail(email);
+            account = userAccountService.findUserByEmail(email);
         } catch (Exception e) {
             return JsonResult.errorMsg("系统异常");
         }
