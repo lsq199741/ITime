@@ -14,13 +14,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "user_basic")
 public class UserBasic {
 
-    @Id
-    private ObjectId _id;
-
-    //闲时号
-    @Indexed(unique = true, background = true)
-    private ObjectId it_code;
-
     //用户昵称
     private String nickname;
 
@@ -28,7 +21,7 @@ public class UserBasic {
     private Integer gender;
 
     //用户头像
-    private String headImgUrl;
+    private String head_img_url;
 
     //用户个人简介
     private String intro;
@@ -42,11 +35,9 @@ public class UserBasic {
     @Override
     public String toString() {
         return "UserBasic{" +
-                "_id=" + _id.toString() +
-                ", it_code=" + it_code +
                 ", nickname='" + nickname + '\'' +
                 ", gender=" + gender +
-                ", headImgUrl='" + headImgUrl + '\'' +
+                ", headImgUrl='" + head_img_url + '\'' +
                 ", intro='" + intro + '\'' +
                 ", homepage='" + homepage + '\'' +
                 ", wechat_img='" + wechat_img + '\'' +

@@ -5,7 +5,7 @@ import org.bson.types.ObjectId;
 
 public interface IUserBasicService {
 
-    ObjectId saveBasic(UserBasic basic);
+    boolean saveBasic(UserBasic basic);
 
     boolean updateBasic(UserBasic basic);
 

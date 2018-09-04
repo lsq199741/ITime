@@ -17,13 +17,13 @@ public class UserBasicServiceImpl implements IUserBasicService {
     MongoOperations mongoOperations;
 
     @Override
-    public ObjectId saveBasic(UserBasic basic) {
+    public boolean saveBasic(UserBasic basic) {
         mongoOperations.save(basic);
         UserBasic result = getBasicById(basic.get_id());
         if (result == null)
-            return null;
+            return false;
         else
-            return result.get_id();
+            return true;
     }
 
     @Override
